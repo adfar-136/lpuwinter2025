@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Todo</h1>
+    <form onsubmit="addTodo(event)">
+        <input type="text" id="input">
+        <button type="submit">Add Todo</button>
+    </form>
+    <ul id="list">
+    </ul>
+    <script>
+        var input = document.getElementById("input")
+        var list = document.getElementById("list")
+        function addTodo(event){
+            event.preventDefault()
+            var x = input.value;
+            if(x){
+            var li = document.createElement("li")
+            li.innerHTML = x;
+            const completBtn = document.createElement("button")
+            completBtn.textContent = "Complete"
+            completBtn.onclick = function(){
+                li.classList.toggle("main")
+            }
+            const removeBtn = document.createElement("button")
+            removeBtn.textContent = "Remove";
+            removeBtn.style.marginLeft = "20px"
+            removeBtn.onclick = function(){
+                li.remove()
+            }
+            li.appendChild(removeBtn)
+            li.appendChild(completBtn)
+            list.appendChild(li)
+            }
+
+        }
+    </script>
+</body>
+</html>

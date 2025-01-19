@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>How does js execute its code</h1>
+    <script>
+        console.log(this)
+        var a =10;
+        console.log(a)
+        var b = "Adfar";
+        console.log(b);
+        function add(num1,num2){
+            var sum = num1+num2;
+            function triple(t){
+                var thrice = t*t*t;
+                return thrice;
+            }
+            var result = triple(4);
+            console.log(result)
+            return sum;
+        }
+        var result = add(10,20);
+        console.log(result)
+    </script>
+</body>
+</html>

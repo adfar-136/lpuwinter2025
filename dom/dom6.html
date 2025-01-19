@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Event Listeners</h1>
+    <input type="text" id="input" >
+    <button id="myButton">Click me!</button>
+    <script>
+        // 1. addEventListener
+       let input =  document.getElementById("input")
+       input.addEventListener("focus",(event)=>{
+        event.target.style.padding="20px";
+            event.target.style.border="2px solid black";
+            event.target.style.backgroundColor = "red"
+       })
+       document.getElementById("myButton").addEventListener("click",()=>{
+              document.querySelector("body").style.backgroundColor ="pink"
+       })
+    </script>
+</body>
+</html>

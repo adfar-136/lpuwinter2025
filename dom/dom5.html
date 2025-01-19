@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Adfar Rasheed</h1>
+    <ul id="list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+        <li>React</li>
+    </ul>
+    <button onclick="myfunction()">Remove</button>
+    <button onclick="myfun()">Replace</button>
+    <script>
+        function myfunction() {
+            var list = document.getElementById("list");
+            // if(list.children[1]){
+            //     list.removeChild(list.children[1])
+            // while(list.hasChildNodes){
+            //     list.removeChild(list.firstChild)
+            // }
+            // if(list.hasChildNodes){
+            //     list.removeChild(list.firstChild)
+            // }
+            console.dir(list)
+                list.removeChild(list.firstChild)
+            console.dir(list)
+
+
+            // }
+        }
+        function myfun() {
+            var list = document.getElementById("list");
+            var x = list.children[0]
+            const newNode = document.createTextNode("Adfarrrr")
+            console.dir(x)
+            x.replaceChild(newNode,x.childNodes[0])
+        }
+    </script>
+</body>
+</html>

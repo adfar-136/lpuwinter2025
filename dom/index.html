@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            background-color: red;
+        }
+        .active{
+            background-color: black;
+            color: #fff;
+        }
+    </style>
+</head>
+<body id="body" class="">
+    
+    <h1 id="heading" title="I am an heading element">Adfar Rasheed</h1>
+    <button onclick="fun()">Dark/Light Mode</button>
+    <div id="container">
+        <button onclick="funn()">Add h1</button>
+    </div>
+    <script>
+        let element = document.getElementById("container")
+        function funn(){
+            var h1 = document.createElement("h1");
+            h1.innerText="VariableVerse"
+            element.appendChild(h1)
+        }
+        var ele = document.getElementById("body")
+        function fun(){
+            // ele.classList.add("active")
+            // ele.classList.remove("active")
+            ele.classList.toggle("active")
+            console.log(ele.classList)
+        }
+
+        // var ele = document.getElementById("heading")
+        //  function fun(){
+        //     ele.setAttribute("class","main")
+        //  }
+        // var ele = document.querySelector("div p");
+        // var ele2 = document.querySelectorAll("p")
+        // console.log(ele2)
+        // ele.innerHTML = "jhdgfusduyfg"
+        // var ele = document.getElementsByTagName("p");
+        
+
+       
+        // var ele = document.getElementsByClassName("para");
+        // console.log(ele)
+        // function fun(){
+        //     for(let i =0;i<ele.length;i++){
+        //     ele[i].style.color = "red";
+        //     ele[i].innerHTML = "Adfar Rasheed";
+        //     ele[i].style.backgroundColor ="yellow"
+        // }
+        // }
+    //     var ele = document.getElementById("main");
+    //     console.log(ele)
+    //    function fun(){
+    //      ele.textContent = "Adfar <mark> RAsheed</mark>";
+    //      ele.style.backgroundColor="red"
+    //    }
+    //    var element = document.getElementById("container")
+    //    console.log(element.innerText)
+    </script>
+</body>
+</html>

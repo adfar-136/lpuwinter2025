@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #gparent {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        #parent{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        #child{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bubbling and Capturing</h1>
+    <div id="gparent">
+        <div id="parent">
+            <div id="child" onclick="event.stopPropagation()"></div>
+
+        </div>
+    </div>
+    <script>
+        var gparent = document.getElementById("gparent")
+        gparent.addEventListener("click",()=>{
+            console.log("grandparent called")
+        },true)
+        var parent = document.getElementById("parent")
+        parent.addEventListener("click",()=>{
+            console.log("parent called")
+        },true)
+        var child = document.getElementById("child")
+        child.addEventListener("click",()=>{
+            console.log("child called")
+        })
+    </script>
+</body>
+</html>
