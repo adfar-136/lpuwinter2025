@@ -1,0 +1,576 @@
+import Adfar from "./components/About";
+import Blog from "./components/Blog";
+import { Contact } from "./components/Contact";
+var fname = "Adfar"
+function App() {
+  return (
+    <div className="App">
+      <h1>This  is my react app</h1>
+      <h1>My name is {fname}</h1>
+      <Adfar/>
+     {/* <Blog fname= {fname} age="25"/> */}
+     <Blog fname= "Rohit" age="22" salary={50000} skills={["HTML","CSS","JS","React"]}/>
+     {/* <Blog fname= "Rohan" age="22"/>
+     <Blog/> */}
+      <Contact/>
+      <hr/>
+    </div>
+  );
+}
+
+// function About(){
+//   return <div>
+//     <h1>About Page</h1>
+//     <Contact/>
+//   </div>
+// }
+// function Contact(){
+//   return <h1>Contact Page</h1>
+// }
+export default App;
+
+
+
+import React from 'react'
+
+function App() {
+  let data = [
+
+    {name:"name",title:"title",salary:"salary"},
+    ["John","Developer",5000],
+    ["Jane","Designer",4000],
+    ["Bob","Manager",3000],
+    ["Adfar","MERN","10000"],   
+  ]
+  return (
+    <div>
+      <table style={{border:"2px solid black",borderCollapse:"collapse"}}>
+        <tr >
+         {Object.keys(data[0]).map(item=><th key={item} style={{border:"2px solid black"}}>{item}</th>)}
+          
+        </tr>
+        {data.slice(1).map((item)=>{
+          return <tr key={item}>{item.map((itemm)=>{
+               return <td key={item} style={{border:"2px solid black"}}>{itemm}</td>
+          })
+          }</tr>
+        })}
+        
+      </table>
+    </div>
+  )
+}
+
+export default App
+
+
+import React from 'react'
+
+function App() {
+  var arr = [1,2,3,4,5,1];
+
+  return (
+    <div>
+      <ul>
+        {arr.map(item=><li key={item}>{item}</li>)}
+      </ul>
+    </div>
+  )
+}
+
+export default App
+
+
+import React from 'react'
+import Comp1 from './components/Comp1'
+
+export default function App() {
+  return (
+    <div>
+      <Comp1 fname="Adfar" age="25">
+        <p>Hi, I am a child</p>
+        <h1>Hello</h1>
+      </Comp1>
+    </div>
+  )
+}
+
+
+import React, { useState } from 'react'
+import Counter from './components/Counter'
+
+export default function App() {
+  
+  const [bgColor,setBgColor] = useState("white")
+  const [color,setColor] = useState("black")
+  const [text,setText] = useState("Dark")
+  function handleTheme(){
+    if(bgColor === "black"){
+      setBgColor("white")
+      setColor("black")
+      setText("Dark")
+    } else {
+      setBgColor("black")
+      setColor("white")
+      setText("Light")
+    }
+  }
+  return (
+    <div style={{backgroundColor:bgColor,color:color}}>
+      <Counter/>
+      <button onClick={handleTheme}>{text} Mode</button>
+      
+    </div>
+  )
+}
+
+
+import React, { useState } from 'react'
+import Counter from './components/Counter'
+
+export default function App() {
+  const [condition,setCondition] = useState(false)
+  
+  function handleTheme(){
+    setCondition(!condition)
+  }
+  return (
+    <div 
+    style={{backgroundColor:condition?"white":"black",color:condition?"black":"white"}}>
+      {/* <Counter/> */}
+     <h1>Adfar Rasheed</h1>
+      <button onClick={handleTheme}>{condition ?"Dark":"Light"} Mode</button>
+      
+    </div>
+  )
+}
+
+
+import React, { useState } from 'react'
+
+function App() {
+  const [count, setCount] = React.useState(0)
+  const [number,setNumber] = useState(1000)
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+
+      <button onClick={()=>setCount(count+1)}>Increment Count</button>
+      <h1 title='nUmber header'>Number : {number}</h1>
+      <button onClick={()=>setNumber(number-1)}>Increment Number</button>
+    </div>
+  )
+}
+
+export default App
+
+
+import React, { useState } from 'react'
+
+function App() {
+  const [count,setCount] = useState(0)
+  const [number,setNumber] = useState(1000)
+  function handleClick(){
+    setCount(p=>p+1)
+    setNumber(8)
+    setCount(count+2)
+  }
+  return (
+    <div>
+      <h1>Count : {count} Number: {number}</h1>
+      <button onClick={handleClick}>++++++++</button>
+    </div>
+  )
+}
+
+export default App
+
+
+import React, { useState } from 'react'
+
+function Controlled() {
+    const [name,setName] = useState("")
+    const [email,setEmail] = useState("")
+    const [pass,setPass] = useState("")
+    const [condition,setCondition] = useState(false)
+    function handleSubmit(e){
+        e.preventDefault()
+         setCondition(true)
+         
+    }
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type='text' placeholder='Enter Username' 
+        value={name} onChange={(event)=>{setName(event.target.value)}}/><br/><br/>
+        <input type='email' placeholder='Enter Email' 
+        value={email} onChange={(e)=>setEmail(e.target.value)}/><br/><br/>
+        <input type='password' placeholder='Enter Password'
+        value={pass} onChange={(e)=>setPass(e.target.value)}/><br/><br/>
+        <input type='submit' value="Create"/>
+        {condition && (
+            <div>
+                <h1>My name is {name}</h1>
+            <h1>My email is {email}</h1>
+            <h1>My pass is {pass}</h1>
+            </div>
+        )}
+      </form>
+    </div>
+  )
+}
+
+export default Controlled
+
+
+import React, { useState } from 'react'
+
+function Controlled() {
+    const [data,setData] = useState({
+        name:"",
+        email:"",
+        pass:""
+    })
+    const [condition,setCondition] = useState(false)
+    function handleSubmit(e){
+        e.preventDefault()
+         setCondition(true)
+         
+    }
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type='text' placeholder='Enter Username' 
+        value={data.name} onChange={(event)=>{setData({...data,name:event.target.value})}}/><br/><br/>
+        <input type='email' placeholder='Enter Email' 
+        value={data.email} onChange={(e)=>setData({...data,email:e.target.value})}/><br/><br/>
+        <input type='password' placeholder='Enter Password'
+        value={data.pass} onChange={(e)=>setData({...data,pass:e.target.value})}/><br/><br/>
+        <input type='submit' value="Create"/>
+        {condition && data.name}<br/>
+        {condition && data.email}<br/>
+        {condition && data.pass}<br/>
+      </form>
+    </div>
+  )
+}
+
+export default Controlled
+
+
+import React, { useState } from 'react'
+
+function Controlled() {
+    const [data,setData] = useState({
+        name:"",
+        email:"",
+        pass:""
+    })
+    const [condition,setCondition] = useState(false)
+    function handleSubmit(e){
+        e.preventDefault()
+         setCondition(true)
+         
+    }
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type='text' placeholder='Enter Username' 
+        value={data.name} onChange={(e)=>setData((prev)=>({...prev,name:e.target.value}))}/><br/><br/>
+        <input type='email' placeholder='Enter Email' 
+        value={data.email} onChange={(e)=>setData((prev)=>({...prev,email:e.target.value}))}/><br/><br/>
+        <input type='password' placeholder='Enter Password'
+        value={data.pass} onChange={(e)=>setData((prev)=>({...prev,pass:e.target.value}))}/><br/><br/>
+        <input type='submit' value="Create"/>
+        {condition && data.name}<br/>
+        {condition && data.email}<br/>
+        {condition && data.pass}<br/>
+      </form>
+    </div>
+  )
+}
+
+export default Controlled
+
+
+import React, { useState } from 'react'
+
+export default function App() {
+  const [formData,setFormData] = useState({email:"",password:""})
+  const [isSignUp,setIsSignUp] = useState(true)
+  const [isLoggedIn,setIsLoggedIn] = useState(false);
+  function handleChange(e){
+    let {name,value} = e.target;
+    setFormData({...formData,[name]:value})
+  }
+  function handleSignup(e){
+    e.preventDefault();
+    setIsSignUp(false)
+
+  }
+  function handleSignin(e){
+    e.preventDefault();
+    setIsLoggedIn(true)
+  }
+  return (
+    <div>
+      {isLoggedIn ? (
+        <h1>Hello User</h1>
+      ):(
+        <>
+         {isSignUp ? (
+          <>
+           <form onSubmit={handleSignup}>
+            <h1>Sign Up Page</h1>
+            <input type="email" name='email' value={formData.email} placeholder='Enter Email'
+            onChange={handleChange}/>
+            <input type="password" name='password' value={formData.password} placeholder='Enter Password'
+            onChange={handleChange}/>
+            <button type='submit'>Sign Up</button>
+           </form>
+          </>
+         ):(<> 
+          <form onSubmit={handleSignin}>
+            <h1>Sign In Page</h1>
+            <input type="email" name='email' value={formData.email} placeholder='Enter Email'
+            onChange={handleChange}/>
+            <input type="password" name='password' value={formData.password} placeholder='Enter Password'
+            onChange={handleChange}/>
+            <button type='submit'>Sign IN</button>
+          
+         </form>
+         </>)}
+        </>
+      )}
+      {formData.email}
+      {formData.password}
+    </div>
+  )
+}
+
+
+import React, { useReducer } from 'react'
+// function reducer(state,action){
+//   if(action === "increment"){
+//     return state+1
+//   } else if(action === "decrement"){
+//     return state-1
+//   }
+//   return state
+// }
+function reducer(state,action){
+  if(action.type === "inc"){
+    return {count:state.count+1}
+  } else if(action.type === "dec"){
+    return {count:state.count-1}
+  }
+  return state
+}
+export default function App() {
+  const [state,dispatch] = useReducer(reducer,{count:0,bgcolor:"red"})
+  return (
+    <div>
+       <h1>Count : {state.count}</h1>
+       <button onClick={()=>dispatch({type:"inc"})}>Increment</button>
+       <button onClick={()=>dispatch({type:"dec"})}>Decrement</button>
+       {/* <button onClick={()=>dispatch("increment")}>Increment</button>
+       <button onClick={()=>dispatch("decrement")}>Decrement</button> */}
+    </div>
+  )
+}
+
+
+import React, { useReducer } from 'react'
+// function reducer(state,action){
+//    switch(action.feild){
+//     case "name":
+//       return {...state, name:action.value}
+//     case "email":
+//       return {...state, email:action.value}
+//     default:
+//       return state;
+//    }
+// }
+function reducer(state,action){
+  switch(action.type){
+   case "update":
+     return {...state, [action.feild]:action.value}
+   default:
+     return state;
+  }
+}
+function App() {
+  const [state,dispatch] = useReducer(reducer,{name:"",email:""})
+  return (
+    <div>
+      <form>
+        <input type='text' placeholder='enter username'
+        onChange={(e)=>dispatch({type:"update",feild:"name",value:e.target.value})}/>
+        <input type='email' placeholder='enter email'
+        onChange={(e)=>dispatch({type:"update",feild:"email",value:e.target.value})}/>
+        
+      </form>
+    </div>
+  )
+}
+
+export default App
+
+
+import React, { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/Routes/Home'
+import About from './components/Routes/About'
+import Contact from './components/Routes/Contact'
+import User from './components/Routes/User'
+import Navbar from './components/Routes/Navbar'
+import Comp1 from './components/CSS/Comp1'
+import Comp2 from './components/CSS/Comp2'
+import Userdetails from './components/Routes/Userdetails'
+import Phone from './components/Routes/Phone'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  return (
+    <div>
+      
+      <BrowserRouter>
+         <Navbar/>
+         <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path='/about' element={<About/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+          <Route path='/user' element={<User/>}/>
+          <Route path='/user/:id' element={<Userdetails/>}/>
+          <Route path="/user/:id/contact/:no" element={<Phone/>}/>
+
+         </Routes>
+      </BrowserRouter>
+      
+    </div>
+  )
+}
+
+
+import React, { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/Routes/Home'
+import About from './components/Routes/About'
+import Contact from './components/Routes/Contact'
+import User from './components/Routes/User'
+
+import Userdetails from './components/Routes/Userdetails'
+import Phone from './components/Routes/Phone'
+import Blog from './components/Routes/Blog'
+import Shop from './components/Routes/Shop'
+import Mainhome from './components/Routes/Mainhome'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  return (
+    <div>
+      
+      <BrowserRouter>
+         <Routes>
+        <Route path="/" element={<Home/>} >
+          <Route index element={<Mainhome/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/contact' element={<Contact/>}>
+              <Route path='blog' element={<Blog/>}/>
+              <Route path='shop' element={<Shop/>}/>
+          </Route>
+          <Route path='/user' element={<User/>}/>
+          <Route path='/user/:id' element={<Userdetails/>}/>
+          <Route path="/user/:id/contact/:no" element={<Phone/>}/>
+         </Route>
+         </Routes>
+      </BrowserRouter>
+      
+    </div>
+  )
+}
+
+
+import React, { createContext } from 'react'
+import Compo1 from './components/contextapi/Compo1'
+var fname = createContext();
+var lname = createContext()
+export default function App() {
+  return (
+    <div>
+      <fname.Provider value="Adfar">
+        <lname.Provider value="Rasheed">
+          <Compo1/>
+        </lname.Provider>
+      </fname.Provider>
+    </div>
+  )
+}
+export {fname,lname}  //exporting the context
+
+
+import React, { useState } from 'react'
+import TodoList from './components/Efficiency/memo/TodoList'
+import { createTodos } from './components/Efficiency/memo/utils'
+let todos =createTodos()
+function App() {
+  const [tab,setTab] = useState("all")
+  const [isDark,setIsDark] = useState(false)
+  return (
+    <div>
+      <button onClick={()=>setTab("all")}>All</button>
+      <button onClick={()=>setTab("completed")}>Completed</button>
+      <button onClick={()=>setTab("notcompleted")}>Not Completed</button>
+      <label>
+        <input type='checkbox' 
+        onChange={(e)=>setIsDark(e.target.checked)}/> Dark Mode
+      </label>
+      <TodoList todos={todos} tab ={tab} theme={isDark ? "dark" : "light"} />
+    </div>
+  )
+}
+
+export default App
+
+
+import React, { useCallback, useState } from 'react'
+import Counter from './components/Efficiency/memo/Counter'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  console.log(("parent called"))
+  const onclick =useCallback(()=>{
+    console.log("clicked")
+  },[])
+  return (
+    <div>
+      <h1>COunt parent : {count}</h1>
+      <button onClick={()=>setCount(count+1)}>Increment</button>
+      <Counter click = {onclick}/>
+    </div>
+  )
+}
+
+
+import React, { lazy, Suspense } from 'react'
+import Navbar from './components/Efficiency/lazyloading/Navbar'
+import Hero from './components/Efficiency/lazyloading/Hero'
+const Testimonials = lazy(()=>import("./components/Efficiency/lazyloading/Testimonials.js"))
+const Footer = lazy(()=>import("./components/Efficiency/lazyloading/Footer.js"))
+
+function App() {
+  return (
+    <div>
+      <Suspense fallback={<h1>Please wait....</h1>}>
+        <Footer/>
+      </Suspense>
+      <Suspense fallback={<h1>Sbar rakho ............</h1>}>
+        <Testimonials/>
+      </Suspense>
+      <Navbar/>
+      <Hero/>
+    </div>
+  )
+}
+
+export default App

@@ -1,4 +1,6 @@
+console.log("1")
 var promise = new Promise((resolve,reject)=>{
+    console.log("2")
     var name = "Adfar"
     if(name === "Adfar"){
         resolve(name)
@@ -6,6 +8,7 @@ var promise = new Promise((resolve,reject)=>{
         reject("error")
     }
 })
+console.log("3")
 promise.then((res)=>{
     console.log(res)
 }).catch((err)=>{

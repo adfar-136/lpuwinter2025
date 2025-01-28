@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <button>Submit</button>
+    <script>
+        let element = document.getElementById("input")
+        function debounce(fun,delay){
+            let timer;
+            return function(){
+                clearTimeout(timer);
+                timer = setTimeout(fun,delay);
+            }
+        }
+        function search(){
+            console.log("Adfar")
+        }
+        element.addEventListener("keydown",debounce(search,1000))
+    </script>
+</body>
+</html>
