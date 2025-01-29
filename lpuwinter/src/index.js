@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import ThemeProvider, { myContextt } from './components/Providers/ThemeProvider';
+import { Provider } from 'react-redux';
+import storee from './reduxclass/store';
+import storeee from './reduxTool/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- <ThemeProvider>
+   <Provider store={storeee}>
     <App />
- </ThemeProvider>
+   </Provider>
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -574,3 +574,49 @@ function App() {
 }
 
 export default App
+
+
+import React from 'react'
+import Counter from './components/Efficiency/ErrorBoundaries/Counter'
+import ErrorBoundary from './components/Efficiency/ErrorBoundaries/ErrorBoundary'
+
+function App() {
+  return (
+    <div>
+      <h1> ADfar Rasheed</h1>
+      <Counter/>
+      <ErrorBoundary>
+        <Counter/>
+        <Counter/>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Counter/>
+      </ErrorBoundary>
+    </div>
+  )
+}
+
+export default App
+
+import React from 'react'
+import Counterredux from './Counterredux'
+import Likeredux from './Likeredux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setBgColor } from './reduxstore/action'
+import FormRedux from './FormRedux'
+function App() {
+  const bgColor = useSelector(state=>state.bgColor.backgroundColor);
+  const dispatch = useDispatch()
+  return (
+    <div style={{backgroundColor:bgColor}}>
+      <button onClick={()=>dispatch(setBgColor("blue"))}>Blue</button>
+      <button onClick={()=>dispatch(setBgColor("yellow"))}>Yellow</button>
+      <button onClick={()=>dispatch(setBgColor("green"))}>green</button>
+      <Counterredux/>
+      <Likeredux/>
+      <FormRedux/>
+    </div>
+  )
+}
+
+export default App
